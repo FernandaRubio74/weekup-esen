@@ -1,11 +1,16 @@
 {/**refer: https://wind-ui.com/components/carousels/  & para usar glide: https://glidejs.com/docs/options/*/}
 
 import Glide from '@glidejs/glide'
-import React, { useEffect } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import EventCardFull from './EventCardFull'
+import events from '../data/eventsData'
+import { useNavigate } from 'react-router-dom'
 
 const Events = () => {
- useEffect(() => {
+  const navigate = useNavigate()
+  const [selectedEvent, setSelectedEvent] = useState(null)
+
+  useEffect(() => {
     const slider = new Glide(".glide-01", {
       type: "carousel",
       perView: 5,
@@ -18,12 +23,8 @@ const Events = () => {
         },
       },
       breakpoints: {
-        1024: {
-          perView: 4,
-        },
-        670: {
-          perView: 3,
-        },
+        1024: { perView: 4 },
+        670: { perView: 3 },
       },
     }).mount()
 
@@ -32,6 +33,29 @@ const Events = () => {
     }
   }, [])
 
+  // Puedes reutilizar el mismo modal/detalle de EventsPage aquí
+  if (selectedEvent) {
+    return (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
+        <div className="bg-white rounded-lg p-6 max-w-lg w-full relative text-gray-900">
+          <button
+            className="absolute top-2 right-2 text-gray-500 hover:text-gray-800"
+            onClick={() => setSelectedEvent(null)}
+          >
+            ✕
+          </button>
+          <EventCardFull {...selectedEvent} />
+          {/* Aquí puedes agregar más detalles si quieres */}
+          <div className="mt-4">
+            <p className="font-semibold">Descripción:</p>
+            <p>{selectedEvent.description}</p>
+            {/* Agrega más campos si lo necesitas */}
+          </div>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <>
       {/*<!-- Component: Carousel with controls inside --> */}
@@ -39,37 +63,15 @@ const Events = () => {
         {/*    <!-- Slides --> */}
         <div className="overflow-hidden" data-glide-el="track">
           <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
-            <li>
-              <img
-                src="event1.jpg"
-                className="m-auto w-70 h-70 object-cover rounded-l"
-              />
-            </li>
-            <li>
-              <img
-                src="event2.jpg"
-                className="m-auto w-70 h-70 object-cover rounded-l"
-              />
-            </li>
-            <li>
-              <img
-                src="event3.jpg"
-                className="m-auto w-70 h-70 object-cover rounded-l"
-              />
-            </li>
-            <li>
-              <img
-                src="event4.jpg"
-                className="m-auto w-70 h-70 object-cover rounded-l"
-              />
-            </li>
-            <li>
-              <img
-                src="event2.jpg"
-                className="m-auto w-70 h-70 object-cover rounded-l"
-              />
-            </li>
-            
+            {events.map((event, idx) => (
+              <li
+                key={idx}
+                onClick={() => navigate(`/event/${event.id}`)}
+                className="cursor-pointer"
+              >
+                <EventCardFull {...event} />
+              </li>
+            ))}
           </ul>
         </div>
         {/*    <!-- Controls --> */}
@@ -121,7 +123,7 @@ const Events = () => {
           </button>
         </div>
       </div>
-      {/*<!-- End Carousel with contraols inside --> */}
+      {/*<!-- End Carousel with controls inside --> */}
     </>
   )
 }

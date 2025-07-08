@@ -1,145 +1,12 @@
 import React, { useState } from 'react';
 import { Calendar, Users, MapPin, Clock, ChevronDown, Menu, X, ArrowLeft, User, Phone, Mail, Tag, Info } from 'lucide-react';
+import EventCardFull from '../components/EventCardFull';
+import events from '../data/eventsData';
 
 const EventsPage = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [selectedEvent, setSelectedEvent] = useState(null);
   const [filterCategory, setFilterCategory] = useState('All');
-
-  const events = [
-    {
-      id: 1,
-      title: "Chess Tournament 2025",
-      date: "2025-07-15",
-      time: "09:00",
-      endTime: "17:00",
-      location: "Main Hall - Building A",
-      category: "Sports",
-      description: "Annual chess tournament open to all students and faculty. Compete for the university championship title and win exciting prizes. Registration is required by July 10th.",
-      organizer: "Sports Committee",
-      contact: {
-        name: "Maria Rodriguez",
-        email: "maria.rodriguez@esen.edu.sv",
-        phone: "+503 1234-5678"
-      },
-      capacity: 64,
-      registered: 42,
-      requirements: ["Student ID", "Registration form", "Chess set (optional)"],
-      image: "chess-tournament",
-      price: "Free",
-      tags: ["Tournament", "Chess", "Competition", "Students"]
-    },
-    {
-      id: 2,
-      title: "Lost Items Inventory Workshop",
-      date: "2025-07-20",
-      time: "14:00",
-      endTime: "16:00",
-      location: "Student Services Office",
-      category: "Administrative",
-      description: "Workshop on how to properly report and claim lost items on campus. Learn about the new digital system and procedures for handling lost and found items.",
-      organizer: "Student Services",
-      contact: {
-        name: "Carlos Mendez",
-        email: "carlos.mendez@esen.edu.sv",
-        phone: "+503 1234-5679"
-      },
-      capacity: 30,
-      registered: 18,
-      requirements: ["Student ID"],
-      image: "lost-items",
-      price: "Free",
-      tags: ["Workshop", "Administrative", "Lost Items", "Procedures"]
-    },
-    {
-      id: 3,
-      title: "Beach Conference 2025: Marine Biology",
-      date: "2025-07-25",
-      time: "10:00",
-      endTime: "18:00",
-      location: "Coastal Research Center",
-      category: "Academic",
-      description: "International conference on marine biology and coastal ecosystem conservation. Features keynote speakers, research presentations, and networking opportunities with marine biologists from around the world.",
-      organizer: "Biology Department",
-      contact: {
-        name: "Dr. Ana Flores",
-        email: "ana.flores@esen.edu.sv",
-        phone: "+503 1234-5680"
-      },
-      capacity: 150,
-      registered: 89,
-      requirements: ["Registration fee", "Academic credentials", "Lunch pre-order"],
-      image: "marine-conference",
-      price: "$25",
-      tags: ["Conference", "Marine Biology", "Research", "International"]
-    },
-    {
-      id: 4,
-      title: "San Diego Beach Volleyball Tournament",
-      date: "2025-08-01",
-      time: "16:00",
-      endTime: "20:00",
-      location: "San Diego Beach Volleyball Court",
-      category: "Sports",
-      description: "Inter-university beach volleyball tournament. Teams of 4 players compete in a fun and competitive environment. Prizes for top 3 teams and refreshments provided.",
-      organizer: "Athletics Department",
-      contact: {
-        name: "Roberto Silva",
-        email: "roberto.silva@esen.edu.sv",
-        phone: "+503 1234-5681"
-      },
-      capacity: 80,
-      registered: 56,
-      requirements: ["Team registration", "Sports insurance", "Beach volleyball experience"],
-      image: "beach-volleyball",
-      price: "$10 per team",
-      tags: ["Volleyball", "Beach", "Tournament", "Team Sport"]
-    },
-    {
-      id: 5,
-      title: "Tech Innovation Summit",
-      date: "2025-08-05",
-      time: "09:00",
-      endTime: "17:00",
-      location: "Innovation Hub - Building C",
-      category: "Technology",
-      description: "Annual technology summit featuring the latest innovations in AI, blockchain, and software development. Includes workshops, startup pitches, and networking sessions.",
-      organizer: "Computer Science Department",
-      contact: {
-        name: "Dr. Luis Martinez",
-        email: "luis.martinez@esen.edu.sv",
-        phone: "+503 1234-5682"
-      },
-      capacity: 200,
-      registered: 145,
-      requirements: ["Laptop", "Registration", "Technical background preferred"],
-      image: "tech-summit",
-      price: "$15",
-      tags: ["Technology", "Innovation", "AI", "Blockchain", "Startups"]
-    },
-    {
-      id: 6,
-      title: "Cultural Arts Festival",
-      date: "2025-08-10",
-      time: "18:00",
-      endTime: "22:00",
-      location: "University Amphitheater",
-      category: "Cultural",
-      description: "Celebrate diversity through music, dance, and art performances by students from different cultural backgrounds. Food stalls representing various cuisines will be available.",
-      organizer: "Cultural Affairs Office",
-      contact: {
-        name: "Sofia Ramirez",
-        email: "sofia.ramirez@esen.edu.sv",
-        phone: "+503 1234-5683"
-      },
-      capacity: 500,
-      registered: 234,
-      requirements: ["None"],
-      image: "cultural-festival",
-      price: "Free",
-      tags: ["Culture", "Arts", "Music", "Dance", "Food", "Diversity"]
-    }
-  ];
 
   const categories = ['All', 'Sports', 'Academic', 'Administrative', 'Technology', 'Cultural'];
 
@@ -370,50 +237,11 @@ const EventsPage = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {filteredEvents.map((event) => (
               <div 
-                key={event.id} 
-                className="bg-gray-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer shadow-lg hover:shadow-xl"
+                key={event.id}
+                className="cursor-pointer"
                 onClick={() => setSelectedEvent(event)}
               >
-                <div className={`h-48 bg-gradient-to-br ${getEventImage(event.image)} relative overflow-hidden`}>
-                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-                  <div className="absolute top-4 left-4">
-                    <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryColor(event.category)}`}>
-                      {event.category}
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 left-4 right-4">
-                    <h3 className="font-bold text-lg mb-1">{event.title}</h3>
-                    <div className="text-sm opacity-90">By {event.organizer}</div>
-                  </div>
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center text-sm text-gray-300">
-                      <Calendar size={16} className="mr-2" />
-                      {event.date}
-                    </div>
-                    <div className="text-sm font-semibold text-green-400">
-                      {event.price}
-                    </div>
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300 mb-2">
-                    <Clock size={16} className="mr-2" />
-                    {event.time} - {event.endTime}
-                  </div>
-                  <div className="flex items-center text-sm text-gray-300 mb-3">
-                    <MapPin size={16} className="mr-2" />
-                    {event.location}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center text-sm text-gray-300">
-                      <Users size={16} className="mr-2" />
-                      {event.registered}/{event.capacity}
-                    </div>
-                    <div className="text-blue-400 hover:text-blue-300 transition-colors">
-                      <span className="text-sm">View Details →</span>
-                    </div>
-                  </div>
-                </div>
+                <EventCardFull {...event} />
               </div>
             ))}
           </div>
