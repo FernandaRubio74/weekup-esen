@@ -4,7 +4,6 @@ import Navbar from './Navbar'
 const Header = () => {
     return (
         <>
-            <Navbar />
             <div className="relative isolate overflow-hidden bg-gradient-to-b from-indigo-800 via-violet-950 to-stone-900 py-20 sm:py-32">
                 <div
                     aria-hidden="true"

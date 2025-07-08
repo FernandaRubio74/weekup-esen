@@ -1,110 +1,32 @@
-import React, { useEffect } from "react"
-import Glide from "@glidejs/glide"
+  import { Users } from 'lucide-react';
 
-export default function CarouselIndicatorsOutside() {
-  useEffect(() => {
-    const slider = new Glide(".glide-05", {
-      type: "carousel",
-      focusAt: "center",
-      perView: 3,
-      autoplay: 3000,
-      animationDuration: 700,
-      gap: 24,
-      classNames: {
-        nav: {
-          active: "[&>*]:bg-wuiSlate-700",
-        },
-      },
-      breakpoints: {
-        1024: {
-          perView: 2,
-        },
-        640: {
-          perView: 1,
-        },
-      },
-    }).mount()
+  const studentAssociations = [
+    { name: "Engineering", logo: "/api/placeholder/60/60" },
+    { name: "Business", logo: "/api/placeholder/60/60" },
+    { name: "Design", logo: "/api/placeholder/60/60" },
+    { name: "Psychology", logo: "/api/placeholder/60/60" },
+    { name: "Medicine", logo: "/api/placeholder/60/60" },
+    { name: "Law", logo: "/api/placeholder/60/60" },
+    { name: "Architecture", logo: "/api/placeholder/60/60" },
+    { name: "Communications", logo: "/api/placeholder/60/60" }
+  ];
 
-    return () => {
-      slider.destroy()
-    }
-  }, [])
-
+export default function Associations() {
   return (
-    <>
-      {/*<!-- Component: Carousel with indicators outside --> */}
-      <div className="glide-05 relative w-full">
-        {/*    <!-- Slides --> */}
-        <div className="overflow-hidden" data-glide-el="track">
-          <ul className="whitespace-no-wrap flex-no-wrap [backface-visibility: hidden] [transform-style: preserve-3d] [touch-action: pan-Y] [will-change: transform] relative flex w-full overflow-hidden p-0">
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-03.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-04.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-05.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-01.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-            <li>
-              <img
-                src="https://Tailwindmix.b-cdn.net/carousel/carousel-image-02.jpg"
-                className="m-auto max-h-full w-full max-w-full"
-              />
-            </li>
-          </ul>
-        </div>
-        {/*    <!-- Indicators --> */}
-        <div
-          className="flex w-full items-center justify-center gap-2"
-          data-glide-el="controls[nav]"
-        >
-          <button
-            className="group p-4"
-            data-glide-dir="=0"
-            aria-label="goto slide 1"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=1"
-            aria-label="goto slide 2"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=2"
-            aria-label="goto slide 3"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
-          <button
-            className="group p-4"
-            data-glide-dir="=3"
-            aria-label="goto slide 4"
-          >
-            <span className="block h-2 w-2 rounded-full bg-white/20 ring-1 ring-slate-700 transition-colors duration-300 focus:outline-none"></span>
-          </button>
+    <section className="py-16 px-4 bg-gray-800">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-bold mb-8">Student Associations</h2>
+        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-4">
+          {studentAssociations.map((association, index) => (
+            <div key={index} className="bg-gray-700 rounded-lg p-4 text-center hover:bg-gray-600 transition-colors cursor-pointer">
+              <div className="w-12 h-12 bg-blue-500 rounded-full mx-auto mb-3 flex items-center justify-center">
+                <Users size={24} />
+              </div>
+              <div className="text-sm font-medium">{association.name}</div>
+            </div>
+          ))}
         </div>
       </div>
-      {/*<!-- End Carousel with indicators outside --> */}
-    </>
+    </section>
   )
 }
