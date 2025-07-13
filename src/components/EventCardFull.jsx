@@ -13,7 +13,6 @@ const getCategoryColor = (category) => {
 };
 
 const getEventImage = (imageType) => {
-  // Si el valor ya incluye la extensión, úsalo tal cual
   if (imageType.endsWith('.jpg') || imageType.endsWith('.png')) {
     return `/${imageType}`;
   }
