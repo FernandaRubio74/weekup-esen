@@ -84,7 +84,7 @@ const events = [
     registered: 56,
     requirements: ["Team registration", "Sports insurance", "Beach volleyball experience"],
     image: "event3",
-    price: "$10 per team",
+    price: "Free",
     tags: ["Volleyball", "Beach", "Tournament", "Team Sport"]
   },
   {
