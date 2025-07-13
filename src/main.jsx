@@ -6,6 +6,9 @@ import Home from './pages/Home.jsx'
 import Navbar from './components/Navbar.jsx'
 import EventsPage from './pages/EventsPage.jsx'
 import EventCardDetail from './components/EventCardDetail.jsx'
+import AssociationsPage from './pages/AssociationsPage.jsx'
+import AssociationDetailPage from './pages/AssociationDetailPage.jsx'
+import CalendarPage from './pages/CalendarPage.jsx'
 
 
 createRoot(document.getElementById('root')).render(
@@ -15,6 +18,9 @@ createRoot(document.getElementById('root')).render(
         <Route path="/" element={<Home />} />
         <Route path="/EventsPage" element={<EventsPage />} />
         <Route path="/event/:id" element={<EventCardDetail />} />
+        <Route path="/AssociationsPage" element={<AssociationsPage />} />
+        <Route path="/association/:id" element={<AssociationDetailPage />} />
+        <Route path="/CalendarPage" element={<CalendarPage />} />
       </Routes>
     </BrowserRouter>
 )
