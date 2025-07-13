@@ -8,7 +8,7 @@ const AssociationsPage = () => {
   const [selectedAssociation, setSelectedAssociation] = useState(null);
   const [filterCategory, setFilterCategory] = useState('All');
 
-  const categories = ['All', 'Academic', 'Cultural', 'Sports', 'Business', 'Social'];
+  const categories = ['All', 'Academic', 'Cultural', 'Leadership', 'Business', 'Social'];
 
   const filteredAssociations = filterCategory === 'All' 
     ? associations 
