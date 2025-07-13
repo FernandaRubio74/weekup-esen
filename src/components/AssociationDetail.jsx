@@ -28,7 +28,7 @@ const AssociationDetail = ({ association, onBack, backButtonText = "Back to Asso
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
           <div className="relative z-10 text-center">
             <div className="text-6xl font-bold mb-2">{association.acronym}</div>
-            <h1 className="text-3xl font-bold mb-4">{association.name}</h1>
+
             <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${getCategoryColor(association.category)}`}>
               {association.category}
             </div>

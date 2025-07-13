@@ -11,7 +11,7 @@ const Home = () => {
             <Events />
             <Associations />
             <div>
-                <img src="banner-end.jpg" alt="" />
+                <img src="banner-end.jpg" alt="banner" />
             </div>
             <Footer />
         </>

@@ -15,8 +15,8 @@ const CalendarPage = () => {
 
   const filteredItems = agendaItems.filter(item => {
     const matchesSearch = item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                         item.organizer.toLowerCase().includes(searchTerm.toLowerCase());
+      item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.organizer.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = filterCategory === 'All' || item.category === filterCategory;
     return matchesSearch && matchesCategory;
   });
@@ -63,19 +63,19 @@ const CalendarPage = () => {
     const lastDay = new Date(year, month + 1, 0);
     const daysInMonth = lastDay.getDate();
     const startingDayOfWeek = firstDay.getDay();
-    
+
     const days = [];
-    
+
     // Add empty cells for days before the first day of the month
     for (let i = 0; i < startingDayOfWeek; i++) {
       days.push(null);
     }
-    
+
     // Add days of the month
     for (let day = 1; day <= daysInMonth; day++) {
       days.push(day);
     }
-    
+
     return days;
   };
 
@@ -88,7 +88,7 @@ const CalendarPage = () => {
   const getWeekDays = () => {
     const startOfWeek = new Date(currentDate);
     startOfWeek.setDate(currentDate.getDate() - currentDate.getDay());
-    
+
     const days = [];
     for (let i = 0; i < 7; i++) {
       const day = new Date(startOfWeek);
@@ -100,14 +100,14 @@ const CalendarPage = () => {
 
   if (selectedDate) {
     const selectedItems = getItemsForDate(selectedDate);
-    
+
     return (
       <div className="min-h-screen bg-gray-900 text-white">
         {/* Navigation */}
         <nav className="bg-gray-800 px-4 py-3">
           <div className="max-w-7xl mx-auto flex items-center justify-between">
             <div className="flex items-center space-x-4">
-              <button 
+              <button
                 onClick={() => setSelectedDate(null)}
                 className="flex items-center text-blue-400 hover:text-blue-300 transition-colors"
               >
@@ -156,7 +156,7 @@ const CalendarPage = () => {
                       </div>
                     </div>
                   </div>
-                  
+
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-sm">
                     <div className="flex items-center">
                       <Clock className="text-blue-400 mr-2" size={16} />
@@ -171,7 +171,7 @@ const CalendarPage = () => {
                       <span>{item.participants}/{item.capacity} participants</span>
                     </div>
                   </div>
-                  
+
                   <div className="mt-4 pt-4 border-t border-gray-700">
                     <div className="flex items-center justify-between">
                       <span className="text-gray-400">Organize by: <span className="text-blue-400">{item.organizer}</span></span>
@@ -193,13 +193,13 @@ const CalendarPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <section className="bg-[url(/public/banner-end.jpg)] bg-cover py-58 px-4">
+      <section className="bg-gradient-to-b from-indigo-800 via-violet-950 py-16 px-4">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-4xl lg:text-5xl font-bold mb-4">ESEN Calendar</h1>
             <p className="text-xl text-white">Stay updated with all campus events and activities!</p>
           </div>
-          
+
           {/* Search and Filters */}
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row gap-4 mb-6">
@@ -223,7 +223,6 @@ const CalendarPage = () => {
                 ))}
               </select>
             </div>
-            
           </div>
         </div>
       </section>
@@ -268,24 +267,23 @@ const CalendarPage = () => {
                   </div>
                 ))}
               </div>
-              
+
               {/* Calendar grid */}
               <div className="grid grid-cols-7 gap-1">
                 {getDaysInMonth(currentDate).map((day, index) => {
                   if (day === null) {
                     return <div key={index} className="h-20"></div>;
                   }
-                  
+
                   const dateString = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
                   const dayItems = getItemsForDate(dateString);
                   const isToday = new Date().toDateString() === new Date(dateString).toDateString();
-                  
+
                   return (
                     <div
                       key={day}
-                      className={`h-20 border border-gray-700 rounded-lg p-2 cursor-pointer hover:bg-gray-700 transition-colors ${
-                        isToday ? 'bg-blue-900 border-blue-500' : 'bg-gray-800'
-                      }`}
+                      className={`h-20 border border-gray-700 rounded-lg p-2 cursor-pointer hover:bg-gray-700 transition-colors ${isToday ? 'bg-blue-900 border-blue-500' : 'bg-gray-800'
+                        }`}
                       onClick={() => setSelectedDate(dateString)}
                     >
                       <div className="text-sm font-semibold mb-1">{day}</div>

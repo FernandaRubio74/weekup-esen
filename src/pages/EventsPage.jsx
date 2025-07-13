@@ -40,9 +40,9 @@ const EventsPage = () => {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       {/* Header */}
-      <section className="bg-gradient-to-r from-blue-600 to-purple-700 py-16 px-4">
+      <section className="bg-gradient-to-b from-indigo-800 via-violet-950 py-16 px-4">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-4xl lg:text-5xl font-bold mb-4">University Events</h1>
+          <h1 className="text-4xl lg:text-5xl font-bold mb-4">Events</h1>
           <p className="text-xl text-blue-100 mb-8">Discover and participate in exciting campus activities</p>
           
           {/* Category Filter */}
