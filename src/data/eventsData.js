@@ -5,10 +5,10 @@ const events = [
     date: "2025-07-15",
     time: "09:00",
     endTime: "17:00",
-    location: "Main Hall - Building A",
+    location: "ESEN",
     category: "Sports",
     description: "Annual chess tournament open to all students and faculty. Compete for the university championship title and win exciting prizes. Registration is required by July 10th.",
-    organizer: "Sports Committee",
+    organizer: "Student Council",
     contact: {
       name: "Maria Rodriguez",
       email: "maria.rodriguez@esen.edu.sv",
@@ -17,7 +17,7 @@ const events = [
     capacity: 64,
     registered: 42,
     requirements: ["Student ID", "Registration form", "Chess set (optional)"],
-    image: "chess-tournament",
+    image: "event1",
     price: "Free",
     tags: ["Tournament", "Chess", "Competition", "Students"]
   },
@@ -39,7 +39,7 @@ const events = [
     capacity: 30,
     registered: 18,
     requirements: ["Student ID"],
-    image: "lost-items",
+    image: "event2",
     price: "Free",
     tags: ["Workshop", "Administrative", "Lost Items", "Procedures"]
   },
@@ -61,7 +61,7 @@ const events = [
     capacity: 150,
     registered: 89,
     requirements: ["Registration fee", "Academic credentials", "Lunch pre-order"],
-    image: "marine-conference",
+    image: "event3",
     price: "$25",
     tags: ["Conference", "Marine Biology", "Research", "International"]
   },
@@ -83,7 +83,7 @@ const events = [
     capacity: 80,
     registered: 56,
     requirements: ["Team registration", "Sports insurance", "Beach volleyball experience"],
-    image: "beach-volleyball",
+    image: "event4",
     price: "$10 per team",
     tags: ["Volleyball", "Beach", "Tournament", "Team Sport"]
   },
@@ -105,8 +105,8 @@ const events = [
     capacity: 200,
     registered: 145,
     requirements: ["Laptop", "Registration", "Technical background preferred"],
-    image: "tech-summit",
-    price: "$15",
+    image: "banner-end",
+    price: "Free",
     tags: ["Technology", "Innovation", "AI", "Blockchain", "Startups"]
   },
   {
@@ -127,8 +127,8 @@ const events = [
     capacity: 500,
     registered: 234,
     requirements: ["None"],
-    image: "cultural-festival",
-    price: "Free",
+    image: "event4",
+    price: "$10",
     tags: ["Culture", "Arts", "Music", "Dance", "Food", "Diversity"]
   }
 ];

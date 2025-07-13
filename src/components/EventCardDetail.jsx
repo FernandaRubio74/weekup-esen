@@ -13,15 +13,10 @@ const getCategoryColor = (category) => {
 };
 
 const getEventImage = (imageType) => {
-  const gradients = {
-    'chess-tournament': 'from-amber-500 to-orange-600',
-    'lost-items': 'from-purple-500 to-indigo-600',
-    'marine-conference': 'from-blue-500 to-cyan-600',
-    'beach-volleyball': 'from-yellow-500 to-red-600',
-    'tech-summit': 'from-indigo-500 to-purple-600',
-    'cultural-festival': 'from-pink-500 to-rose-600'
-  };
-  return gradients[imageType] || 'from-gray-500 to-gray-600';
+  if (imageType.endsWith('.jpg') || imageType.endsWith('.png')) {
+    return `/${imageType}`;
+  }
+  return `/${imageType}.jpg`;
 };
 
 const EventCardDetail = ({ event, onBack, onEventUpdate }) => {
@@ -68,7 +63,7 @@ const EventCardDetail = ({ event, onBack, onEventUpdate }) => {
       <div className="max-w-4xl mx-auto px-4 py-8">
         {/* Event Header */}
         <div className={`h-64 bg-gradient-to-r ${getEventImage(event.image)} rounded-lg mb-8 flex items-center justify-center relative overflow-hidden`}>
-          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          <div className="absolute inset-0 bg-opacity-40"></div>
           <div className="relative z-10 text-center">
             <h1 className="text-4xl font-bold mb-4">{event.title}</h1>
             <div className={`inline-block px-4 py-2 rounded-full text-sm font-semibold ${getCategoryColor(event.category)}`}>

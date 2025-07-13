@@ -143,7 +143,7 @@ const Events = () => {
       {/* Optional: Quick action buttons */}
       <div className="flex justify-center mt-6">
         <button
-          onClick={() => navigate('/events')}
+          onClick={() => navigate('/EventsPage')}
           className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-semibold transition-colors"
         >
           View All Events

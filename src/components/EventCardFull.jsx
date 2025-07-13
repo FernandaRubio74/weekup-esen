@@ -13,15 +13,12 @@ const getCategoryColor = (category) => {
 };
 
 const getEventImage = (imageType) => {
-  const gradients = {
-    'chess-tournament': 'from-amber-500 to-orange-600',
-    'lost-items': 'from-purple-500 to-indigo-600',
-    'marine-conference': 'from-blue-500 to-cyan-600',
-    'beach-volleyball': 'from-yellow-500 to-red-600',
-    'tech-summit': 'from-indigo-500 to-purple-600',
-    'cultural-festival': 'from-pink-500 to-rose-600'
-  };
-  return gradients[imageType] || 'from-gray-500 to-gray-600';
+  // Si el valor ya incluye la extensión, úsalo tal cual
+  if (imageType.endsWith('.jpg') || imageType.endsWith('.png')) {
+    return `/${imageType}`;
+  }
+  // Si no, asume .jpg por defecto
+  return `/${imageType}.jpg`;
 };
 
 const EventCardFull = ({
@@ -47,8 +44,13 @@ const EventCardFull = ({
       onClick={onClick}
     >
       {/* Event Image/Header */}
-      <div className={`h-48 bg-gradient-to-br ${getEventImage(image)} relative overflow-hidden`}>
-        <div className="absolute inset-0 bg-black bg-opacity-30"></div>
+      <div className="h-48 relative overflow-hidden">
+        <img
+          src={getEventImage(image)}
+          alt={title}
+          className="w-full h-full object-cover opacity-50"
+        />
+        <div className="absolute inset-0"></div>
         
         {/* Category Badge */}
         <div className="absolute top-4 left-4">
@@ -90,36 +92,10 @@ const EventCardFull = ({
           </div>
         </div>
 
-        {/* Time */}
-        <div className="flex items-center text-sm text-gray-300 mb-2">
-          <Clock size={16} className="mr-2" />
-          {time} - {endTime}
-        </div>
-
         {/* Location */}
         <div className="flex items-center text-sm text-gray-300 mb-3">
           <MapPin size={16} className="mr-2" />
           <span className="truncate">{location}</span>
-        </div>
-
-        {/* Capacity Bar */}
-        <div className="mb-3">
-          <div className="flex items-center justify-between text-xs text-gray-400 mb-1">
-            <span>Registered</span>
-            <span>{registered}/{capacity}</span>
-          </div>
-          <div className="w-full bg-gray-700 rounded-full h-1">
-            <div 
-              className={`h-1 rounded-full transition-all duration-300 ${
-                isFullyBooked 
-                  ? 'bg-red-500' 
-                  : spotsRemaining <= 5 
-                    ? 'bg-yellow-500' 
-                    : 'bg-green-500'
-              }`}
-              style={{ width: `${(registered / capacity) * 100}%` }}
-            ></div>
-          </div>
         </div>
 
         {/* Action Area */}
