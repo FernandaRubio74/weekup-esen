@@ -72,7 +72,7 @@ const events = [
     time: "16:00",
     endTime: "20:00",
     location: "Virtual",
-    category: "Sports",
+    category: "Academic",
     description: "Encuentra becas",
     organizer: "Alumni",
     contact: {
