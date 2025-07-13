@@ -30,7 +30,7 @@ const Header = () => {
                 </div>
                 <div className="mx-auto max-w-7xl px-6 lg:px-8 relative">
                     {/* Imagen abajo a la derecha, podemos cambiarla luego por una del logo esen (maybe) */}
-                    <div className="absolute inset-yp-2 right-0 hidden lg:block">
+                    <div className="absolute right-0 top-1/2 -translate-y-1/2 hidden lg:block">
                         <img src="weekuplogo.png" alt="" className="w-100 h-90 object-contain" />
                     </div>
 
@@ -42,7 +42,7 @@ const Header = () => {
                     </div>
                     <div className="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
                         <div className="grid grid-cols-1 gap-x-8 gap-y-6 text-base/7 font-semibold text-white sm:grid-cols-2 md:flex lg:gap-x-10">
-                            <a className='button' href="#">See more</a>
+                            <a className='button' href="EventsPage">See more</a>
                         </div>
                     </div>
                 </div>
