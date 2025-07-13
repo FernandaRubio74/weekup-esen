@@ -55,7 +55,6 @@ const EventCardDetail = ({ event, onBack, onEventUpdate }) => {
               Back to Events
             </button>
           </div>
-          <div className="text-xl font-bold">ESEN Events</div>
         </div>
       </nav>
 
