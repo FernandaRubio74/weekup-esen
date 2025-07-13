@@ -16,11 +16,11 @@ createRoot(document.getElementById('root')).render(
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/EventsPage" element={<EventsPage />} />
-        <Route path="/event/:id" element={<EventCardDetail />} />
-        <Route path="/AssociationsPage" element={<AssociationsPage />} />
-        <Route path="/association/:id" element={<AssociationDetailPage />} />
-        <Route path="/CalendarPage" element={<CalendarPage />} />
+        <Route path="eventsPage" element={<EventsPage />} />
+        <Route path="event/:id" element={<EventCardDetail />} />
+        <Route path="associationsPage" element={<AssociationsPage />} />
+        <Route path="association/:id" element={<AssociationDetailPage />} />
+        <Route path="calendarPage" element={<CalendarPage />} />
       </Routes>
     </BrowserRouter>
 )
